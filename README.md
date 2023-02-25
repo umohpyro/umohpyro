@@ -3,7 +3,7 @@
 
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=umohpyro&label=Profile%20views&color=0e75b6&style=flat" alt="umohpyro" /> </p>
 
-<p align="left"> <a href="https://github.com/umohpyro/github-profile-trophy"><img src="https://github-profile-trophy.vercel.app/?username=umohpyro" alt="umohpyro" /></a> </p>
+<p align="left"> <img src="https://github-profile-trophy.vercel.app/?username=umohpyro" alt="umohpyro" /> </p>
 
 <p align="left"> <a href="https://twitter.com/umohpyro" target="blank"><img src="https://img.shields.io/twitter/follow/umohpyro?logo=twitter&style=for-the-badge" alt="umohpyro" /></a> </p>
 
