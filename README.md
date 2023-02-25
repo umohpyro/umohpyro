@@ -19,13 +19,13 @@
 
 - 📝 I regularly write articles on [https://linkedin.com/in/umohpyro](https://linkedin.com/in/umohpyro)
 
-- 💬 Ask me about **HTML, CSS, JAVASCRIPT, JAVA, MySQL, NodeJS, NextJS etc**
+- 💬 Ask me about **HTML, CSS, JAVASCRIPT, JAVA, MySQL, Wordpress, WHM & cPanel, NodeJS, NextJS, etc**
 
 - 📫 How to reach me **andemumoh@gmail.com**
 
 - 📄 Know about my experiences [https://github.com/umohpyro](https://github.com/umohpyro)
 
-- ⚡ Fun fact **at first glance, you'd think I am a clown**
+- ⚡ Fun fact **at first glance, you'd think I am a clown...**
 
 <h3 align="left">Connect with me:</h3>
 <p align="left">
