@@ -25,7 +25,6 @@
 
 - 📄 Know about my experiences [https://github.com/umohpyro](https://github.com/umohpyro)
 
-- ⚡ Fun fact **at first glance, you'd think I am a clown...**
 
 <h3 align="left">Connect with me:</h3>
 <p align="left">
