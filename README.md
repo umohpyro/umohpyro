@@ -7,7 +7,7 @@
 
 <p align="left"> <a href="https://twitter.com/umohpyro" target="blank"><img src="https://img.shields.io/twitter/follow/umohpyro?logo=twitter&style=for-the-badge" alt="umohpyro" /></a> </p>
 
-- 🔭 I’m currently working on [Written Project](https://writtenproject.com)
+- 🔭 I’m currently working on [Diet GPT - The Pidgin Diet Bot](https://dietgpt.umohpyro.tech/)
 
 - 🌱 I’m currently learning **Software Engineering @ ALX**
 
