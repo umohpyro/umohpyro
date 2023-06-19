@@ -19,7 +19,7 @@
 
 - 📝 I regularly write articles on [https://linkedin.com/in/umohpyro](https://linkedin.com/in/umohpyro)
 
-- 💬 Ask me about **HTML, CSS, JAVASCRIPT, JAVA, MySQL, Wordpress, WHM & cPanel, NodeJS, NextJS, Prisma ORM, Next-Auth, Redis, NextJS 13 App Directory etc**
+- 💬 Ask me about **HTML, CSS, JAVASCRIPT, JAVA, MySQL, WordPress CMS, WHM & cPanel, NodeJS, NextJS, Prisma ORM, Next-Auth, Redis, NextJS 13 App Directory etc**
 
 - 📫 How to reach me **andemumoh@gmail.com**
 
