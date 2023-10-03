@@ -9,7 +9,7 @@
 
 - 🔭 I’m currently working on [Diet GPT - The Pidgin Diet Bot](https://dietgpt.umohpyro.tech/)
 
-- 🌱 I’m currently learning **Software Engineering @ ALX**
+- 🌱 Man recently bagged a certificate in **Software Engineering from ALX**
 
 - 👯 I’m looking to collaborate on [Electro Devices](https://electro-devices.com/)
 
