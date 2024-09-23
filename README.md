@@ -7,7 +7,7 @@
 
 <p align="left"> <a href="https://twitter.com/umohpyro" target="blank"><img src="https://img.shields.io/twitter/follow/umohpyro?logo=twitter&style=for-the-badge" alt="umohpyro" /></a> </p>
 
-- 🔭 I’m currently working on [Diet GPT - The Pidgin Diet Bot]([https://diet-gpt-alx-project.vercel.app/])
+- 🔭 I’m currently working on [Diet GPT - The Pidgin Diet Bot](https://diet-gpt-alx-project.vercel.app/)
 
 - 🌱 Man recently bagged a certificate in **Software Engineering from ALX**
 
