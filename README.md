@@ -1,20 +1,27 @@
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/banner-dark.png" />
-  <img src="assets/banner-light.png" alt="Umoh Andem. Kobo & Code, Uyo, Nigeria. Full-stack developer. I build payments software, and write down how it works." width="100%" />
+  <img src="assets/banner-light.png" alt="Umoh Andem. Full-stack engineer, QA and support, Uyo, Nigeria. I build apps, test them, and support the people who use them." width="100%" />
 </picture>
 
-I'm a full-stack developer in Uyo, Nigeria, and I run [Kobo & Code](https://umoh.name.ng), a small studio that makes careful software for the way Nigeria works. Lately that means payments: split payments, webhooks, and the documentation that makes them easy to get right.
+I'm a full-stack software engineer, a QA and a support engineer in Uyo, Nigeria. I run [Kobo & Code](https://umoh.name.ng), a small studio that makes careful software for the way Nigeria works: apps that count every kobo, run on the phones people carry, and say plainly what they do with your data.
 
-## What I'm working on
+## Products
+
+| Product                                         | What it is                                                                           |
+| ----------------------------------------------- | ------------------------------------------------------------------------------------ |
+| [Ajo Ledger](https://ajo.umoh.name.ng)          | Android record book for ajo, esusu and adashe savings groups. Records only, offline  |
+| [Lumen Cycle](https://lumen.umoh.name.ng)       | Android period and cycle tracker. Everything stays on the phone, no account          |
+| [Solar Sales](https://solar-crm.umoh.name.ng)   | WhatsApp sales console for solar businesses: one shared inbox, quotes and follow-ups |
+| [RenewalDesk](https://renewaldesk.umoh.name.ng) | Android renewals and collections desk for agencies billing clients in naira          |
+
+## Payments work
 
 **[`@umohpyro/better-auth-nuvion`](https://www.npmjs.com/package/@umohpyro/better-auth-nuvion)** is a [Better Auth](https://better-auth.com) plugin for [Nuvion](https://nuvion.co). A customer pays a merchant once, and the plugin moves each parent's share up the chain: a platform, a reseller, a merchant. It also covers refunds, retries and withdrawals. It is an independent beta, not an official Nuvion product, and the docs say exactly what has and has not been run against Nuvion.
 
 - [Read the docs](https://docs.better-auth-nuvion.umoh.name.ng)
 - [Try the live example](https://better-auth-nuvion-example.umoh.name.ng), with your own Nuvion sandbox key ([source](https://github.com/umohpyro/better-auth-nuvion-example))
 
-## Examples I've built on the Nuvion sandbox
-
-Each one is a small, complete app you can read and run. They use a sandbox, so no real money moves.
+Small apps I've built on the Nuvion sandbox, each one complete enough to read and run (no real money moves):
 
 | App                                                            | What it shows                                                                  |
 | -------------------------------------------------------------- | ------------------------------------------------------------------------------ |
@@ -36,7 +43,9 @@ Each one is a small, complete app you can read and run. They use a sandbox, so n
 
 ## What I work with
 
-TypeScript, Next.js, Node.js, Prisma, Better Auth, PostgreSQL and MySQL, Redis. Also Java, WordPress, and the server side of hosting (WHM and cPanel).
+- **Build:** TypeScript, Next.js, React Native and Expo, Node.js, Prisma, Better Auth, PostgreSQL and MySQL, Redis, Cloudflare, the WhatsApp Cloud API.
+- **Test:** automated browser and API tests with Playwright, and manual testing on the mid-range Android phones people actually carry.
+- **Support:** reading a failing payment or webhook until I can say why, and writing it down so the next person doesn't have to.
 
 ## Find me
 
