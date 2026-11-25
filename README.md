@@ -1,6 +1,6 @@
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/banner-dark.png" />
-  <img src="assets/banner-light.png" alt="Umoh Andem. Full-stack engineer, QA and support, Uyo, Nigeria. I build apps, test them, and support the people who use them." width="100%" />
+  <source media="(prefers-color-scheme: dark)" srcset="assets/banner-teal-dark.png" />
+  <img src="assets/banner-teal-light.png" alt="Umoh Andem. Full-stack engineer, QA and support, Uyo, Nigeria. I build apps, test them, and support the people who use them." width="100%" />
 </picture>
 
 I'm a full-stack software engineer, a QA and a support engineer in Uyo, Nigeria. I run [Kobo & Code](https://umoh.name.ng), a small studio that makes careful software for the way Nigeria works: apps that count every kobo, run on the phones people carry, and say plainly what they do with your data.
