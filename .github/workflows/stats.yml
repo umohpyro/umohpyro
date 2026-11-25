@@ -2,7 +2,7 @@ name: stats
 
 on:
   schedule:
-    - cron: "17 3 * * *" # daily
+    - cron: "17 */6 * * *" # four times a day: 00:17, 06:17, 12:17, 18:17 UTC
   workflow_dispatch:
 
 permissions:
