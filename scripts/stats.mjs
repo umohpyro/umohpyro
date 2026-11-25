@@ -37,18 +37,46 @@ if (!res.ok || body.errors)
 const u = body.data.user;
 const c = u.contributionsCollection;
 
-const days = c.contributionCalendar.weeks.flatMap((w) => w.contributionDays);
-const today = new Date().toISOString().slice(0, 10);
-let longest = 0;
-let run = 0;
-for (const d of days) {
-  run = d.contributionCount > 0 ? run + 1 : 0;
-  longest = Math.max(longest, run);
+// The calendar covers one year, so a record needs every year since the account began.
+const gql = async (q, variables) => {
+  const r = await fetch("https://api.github.com/graphql", {
+    method: "POST",
+    headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json", "User-Agent": "profile-stats" },
+    body: JSON.stringify({ query: q, variables }),
+  });
+  const b = await r.json();
+  if (!r.ok || b.errors) throw new Error("GitHub API failed: " + JSON.stringify(b.errors ?? r.status));
+  return b.data;
+};
+const created = new Date((await gql(`query($l:String!){user(login:$l){createdAt}}`, { l: login })).user.createdAt);
+const byDate = new Map();
+for (let y = created.getUTCFullYear(); y <= new Date().getUTCFullYear(); y++) {
+  const from = new Date(Date.UTC(y, 0, 1)).toISOString();
+  const to = new Date(Math.min(Date.UTC(y, 11, 31, 23, 59, 59), Date.now())).toISOString();
+  const d = await gql(
+    `query($l:String!,$f:DateTime!,$t:DateTime!){user(login:$l){contributionsCollection(from:$f,to:$t){contributionCalendar{weeks{contributionDays{date contributionCount}}}}}}`,
+    { l: login, f: from, t: to },
+  );
+  for (const w of d.user.contributionsCollection.contributionCalendar.weeks)
+    for (const day of w.contributionDays) byDate.set(day.date, day.contributionCount);
 }
-let current = 0;
-let i = days.length - 1;
-if (days[i]?.date === today && days[i].contributionCount === 0) i--; // today may not have happened yet
-for (; i >= 0 && days[i].contributionCount > 0; i--) current++;
+const days = [...byDate.entries()].sort(([a], [b]) => (a < b ? -1 : 1)).map(([date, contributionCount]) => ({ date, contributionCount }));
+const today = new Date().toISOString().slice(0, 10);
+const streaks = []; // every run of days with at least one contribution
+let start = null;
+for (let k = 0; k <= days.length; k++) {
+  const on = k < days.length && days[k].contributionCount > 0;
+  if (on && start === null) start = k;
+  if (!on && start !== null) {
+    streaks.push({ len: k - start, end: days[k - 1].date });
+    start = null;
+  }
+}
+const yesterday = new Date(Date.now() - 864e5).toISOString().slice(0, 10);
+const live = streaks.at(-1) && (streaks.at(-1).end === today || streaks.at(-1).end === yesterday) ? streaks.at(-1) : null;
+const current = live?.len ?? 0;
+const earlier = streaks.filter((s) => s !== live).reduce((m, s) => Math.max(m, s.len), 0); // best streak that is over
+const longest = Math.max(current, earlier);
 
 const bytes = {};
 for (const r of u.repositories.nodes)
@@ -60,7 +88,12 @@ const total = langs.reduce((a, [, n]) => a + n, 0) || 1;
 const nf = (n) => n.toLocaleString("en-US");
 const stats = [
   [nf(c.contributionCalendar.totalContributions), "contributions in the last year"],
-  [nf(current), `day streak (longest ${nf(longest)})`],
+  [
+    nf(current),
+    current > earlier
+      ? `day streak, a new record (was ${nf(earlier)})`
+      : `day streak now (record ${nf(longest)})`,
+  ],
   // Not pull requests: a read:user token cannot see private ones, so the count would understate the real number.
   [nf(u.repositories.totalCount), "public repositories I own"],
   [nf(u.followers.totalCount), "followers"],
@@ -108,4 +141,4 @@ ${rows}
 
 mkdirSync("assets", { recursive: true });
 for (const [name, t] of Object.entries(themes)) writeFileSync(`assets/stats-${name}.svg`, svg(t));
-console.log("wrote stats", { total: c.contributionCalendar.totalContributions, current, longest, langs: langs.map(([n]) => n) });
+console.log("wrote stats", { total: c.contributionCalendar.totalContributions, current, earlier, longest, streaks: streaks.length, langs: langs.map(([n]) => n) });
