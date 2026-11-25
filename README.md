@@ -37,6 +37,13 @@ Small apps I've built on the Nuvion sandbox, each one complete enough to read an
 [remit]: https://github.com/umohpyro/nuvion-remittance-example
 [payroll]: https://github.com/umohpyro/nuvion-payroll-example
 
+Also built on the Nuvion sandbox, with the source kept private for now:
+
+- A **Next.js starter** and a **TanStack Start starter** on the plugin: the smallest useful app on each.
+- A **reference app** for building on the Nuvion API with Next.js 16, shadcn/ui, Prisma and SQLite.
+- A **virtual card issuing** example: issue and manage cards.
+- A **marketplace** example.
+
 ## Earlier
 
 - [DietGPT](https://diet-gpt-alx-project.vercel.app): a diet bot that speaks Pidgin ([source](https://github.com/umohpyro/DietGPT)), built during my Software Engineering programme at ALX.
@@ -46,6 +53,15 @@ Small apps I've built on the Nuvion sandbox, each one complete enough to read an
 - **Build:** TypeScript, Next.js, React Native and Expo, Node.js, Prisma, Better Auth, PostgreSQL and MySQL, Redis, Cloudflare, the WhatsApp Cloud API.
 - **Test:** automated browser and API tests with Playwright, and manual testing on the mid-range Android phones people actually carry.
 - **Support:** reading a failing payment or webhook until I can say why, and writing it down so the next person doesn't have to.
+
+## GitHub in numbers
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/stats-teal-dark.png" />
+  <img src="assets/stats-teal-light.png" alt="GitHub in numbers, 25 Nov 2026: 1,680 contributions in the last year, 527 pull requests, 47 public repositories, 18 followers. Languages by public repositories: TypeScript 17, Python 8, C 8, JavaScript 5." width="100%" />
+</picture>
+
+Most of my work is in private repositories: 1,489 of those 1,680 contributions are private, so the public graph understates it. The numbers are a snapshot.
 
 ## Find me
 
