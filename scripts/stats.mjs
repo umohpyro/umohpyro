@@ -61,6 +61,8 @@ for (let y = created.getUTCFullYear(); y <= new Date().getUTCFullYear(); y++) {
     for (const day of w.contributionDays) byDate.set(day.date, day.contributionCount);
 }
 const days = [...byDate.entries()].sort(([a], [b]) => (a < b ? -1 : 1)).map(([date, contributionCount]) => ({ date, contributionCount }));
+const allTime = days.reduce((a, d) => a + d.contributionCount, 0); // every day since the account began, private work included
+const activeDays = days.filter((d) => d.contributionCount > 0).length;
 const today = new Date().toISOString().slice(0, 10);
 const streaks = []; // every run of days with at least one contribution
 let start = null;
@@ -87,6 +89,7 @@ const total = langs.reduce((a, [, n]) => a + n, 0) || 1;
 
 const nf = (n) => n.toLocaleString("en-US");
 const stats = [
+  [nf(allTime), `contributions since ${created.getUTCFullYear()}`],
   [nf(c.contributionCalendar.totalContributions), "contributions in the last year"],
   [
     nf(current),
@@ -94,9 +97,7 @@ const stats = [
       ? `day streak, a new record (was ${nf(earlier)})`
       : `day streak now (record ${nf(longest)})`,
   ],
-  // Not pull requests: a read:user token cannot see private ones, so the count would understate the real number.
-  [nf(u.repositories.totalCount), "public repositories I own"],
-  [nf(u.followers.totalCount), "followers"],
+  [nf(activeDays), "days with at least one contribution"],
 ];
 const stamp = new Date().toISOString().slice(0, 10);
 
@@ -141,4 +142,4 @@ ${rows}
 
 mkdirSync("assets", { recursive: true });
 for (const [name, t] of Object.entries(themes)) writeFileSync(`assets/stats-${name}.svg`, svg(t));
-console.log("wrote stats", { total: c.contributionCalendar.totalContributions, current, earlier, longest, streaks: streaks.length, langs: langs.map(([n]) => n) });
+console.log("wrote stats", { allTime, activeDays, total: c.contributionCalendar.totalContributions, current, earlier, longest, streaks: streaks.length, langs: langs.map(([n]) => n) });
