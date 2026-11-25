@@ -61,10 +61,10 @@ const nf = (n) => n.toLocaleString("en-US");
 const stats = [
   [nf(c.contributionCalendar.totalContributions), "contributions in the last year"],
   [nf(current), `day streak (longest ${nf(longest)})`],
-  [nf(u.pullRequests.totalCount), "pull requests, all time"],
+  // Not pull requests: a read:user token cannot see private ones, so the count would understate the real number.
+  [nf(u.repositories.totalCount), "public repositories I own"],
   [nf(u.followers.totalCount), "followers"],
 ];
-const privateShare = nf(c.restrictedContributionsCount);
 const stamp = new Date().toISOString().slice(0, 10);
 
 const themes = {
@@ -102,7 +102,7 @@ ${tile(stats[0], 48, 77)}${tile(stats[1], 429, 77)}${tile(stats[2], 48, 186)}${t
 <rect x="836.5" y="76.5" width="715" height="217" rx="20" fill="${t.card}" stroke="${t.hair}"/>
 <text x="864" y="110" font-family="${font}" font-size="17" fill="${t.muted}">Languages, by code in public repositories</text>
 ${rows}
-<text x="864" y="276" font-family="${font}" font-size="14" fill="${t.muted}">${privateShare} of the year's contributions are in private repositories.</text>
+<text x="864" y="276" font-family="${font}" font-size="14" fill="${t.muted}">Contributions include work in private repositories.</text>
 </svg>`;
 }
 
