@@ -58,10 +58,10 @@ Also built on the Nuvion sandbox, with the source kept private for now:
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/stats-dark.svg" />
-  <img src="assets/stats-light.svg" alt="GitHub in numbers: contributions in the last year, day streak, pull requests, followers, and languages by code in public repositories. Refreshed daily." width="100%" />
+  <img src="assets/stats-light.svg" alt="GitHub in numbers: contributions in the last year, day streak, pull requests, followers, and languages by code in public repositories. Refreshed four times a day." width="100%" />
 </picture>
 
-Most of my work is in private repositories, so the public graph understates it. The card refreshes daily and counts private contributions as totals only.
+Most of my work is in private repositories, so the public graph understates it. The card refreshes four times a day and counts private contributions as totals only.
 
 ## Find me
 
