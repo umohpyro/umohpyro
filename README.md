@@ -57,11 +57,11 @@ Also built on the Nuvion sandbox, with the source kept private for now:
 ## GitHub in numbers
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/stats-teal-dark.png" />
-  <img src="assets/stats-teal-light.png" alt="GitHub in numbers, 25 Nov 2026: 1,680 contributions in the last year, 527 pull requests, 47 public repositories, 18 followers. Languages by public repositories: TypeScript 17, Python 8, C 8, JavaScript 5." width="100%" />
+  <source media="(prefers-color-scheme: dark)" srcset="assets/stats-dark.svg" />
+  <img src="assets/stats-light.svg" alt="GitHub in numbers: contributions in the last year, day streak, pull requests, followers, and languages by code in public repositories. Refreshed daily." width="100%" />
 </picture>
 
-Most of my work is in private repositories: 1,489 of those 1,680 contributions are private, so the public graph understates it. The numbers are a snapshot.
+Most of my work is in private repositories, so the public graph understates it. The card refreshes daily and counts private contributions as totals only.
 
 ## Find me
 
