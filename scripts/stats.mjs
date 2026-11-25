@@ -82,6 +82,9 @@ const earlier = best?.len ?? 0;
 const longest = Math.max(current, earlier);
 const fmt = (iso) => new Date(iso + "T00:00:00Z").toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" });
 const range = (s) => `${fmt(s.start)} to ${fmt(s.end)}`;
+// Same year on both ends: say it once, so the line stays short.
+const shortRange = (s) =>
+  s.start.slice(0, 4) === s.end.slice(0, 4) ? `${fmt(s.start).replace(/ \d{4}$/, "")} to ${fmt(s.end)}` : range(s);
 
 const bytes = {};
 for (const r of u.repositories.nodes)
@@ -96,7 +99,7 @@ const stats = [
   [nf(c.contributionCalendar.totalContributions), "contributions in the last year"],
   [
     nf(current),
-    live ? `day streak, since ${fmt(live.start)}` : "day streak (none running now)",
+    live ? `day streak now: ${shortRange(live)}` : "day streak (none running now)",
     best
       ? `${current > earlier ? "a new record, was" : "record"} ${nf(earlier)} days: ${range(best)}`
       : "",
