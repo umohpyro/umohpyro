@@ -70,15 +70,18 @@ for (let k = 0; k <= days.length; k++) {
   const on = k < days.length && days[k].contributionCount > 0;
   if (on && start === null) start = k;
   if (!on && start !== null) {
-    streaks.push({ len: k - start, end: days[k - 1].date });
+    streaks.push({ len: k - start, start: days[start].date, end: days[k - 1].date });
     start = null;
   }
 }
 const yesterday = new Date(Date.now() - 864e5).toISOString().slice(0, 10);
 const live = streaks.at(-1) && (streaks.at(-1).end === today || streaks.at(-1).end === yesterday) ? streaks.at(-1) : null;
 const current = live?.len ?? 0;
-const earlier = streaks.filter((s) => s !== live).reduce((m, s) => Math.max(m, s.len), 0); // best streak that is over
+const best = streaks.filter((s) => s !== live).sort((a, b) => b.len - a.len)[0]; // best streak that is over
+const earlier = best?.len ?? 0;
 const longest = Math.max(current, earlier);
+const fmt = (iso) => new Date(iso + "T00:00:00Z").toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" });
+const range = (s) => `${fmt(s.start)} to ${fmt(s.end)}`;
 
 const bytes = {};
 for (const r of u.repositories.nodes)
@@ -93,9 +96,10 @@ const stats = [
   [nf(c.contributionCalendar.totalContributions), "contributions in the last year"],
   [
     nf(current),
-    current > earlier
-      ? `day streak, a new record (was ${nf(earlier)})`
-      : `day streak now (record ${nf(longest)})`,
+    live ? `day streak, since ${fmt(live.start)}` : "day streak (none running now)",
+    best
+      ? `${current > earlier ? "a new record, was" : "record"} ${nf(earlier)} days: ${range(best)}`
+      : "",
   ],
   [nf(activeDays), "days with at least one contribution"],
 ];
@@ -110,12 +114,13 @@ const mono = `'Geist Mono', ui-monospace, 'Cascadia Mono', Consolas, monospace`;
 const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;");
 
 function svg(t) {
-  const tile = ([n, l], x, y) =>
-    `<text x="${x + 26}" y="${y + 66}" font-family="${font}" font-size="50" font-weight="600" letter-spacing="-2.5" fill="${t.ink}">${esc(n)}</text>` +
-    `<text x="${x + 26}" y="${y + 100}" font-family="${font}" font-size="17" fill="${t.muted}">${esc(l)}</text>`;
+  const tile = ([n, l, l2], x, y) =>
+    `<text x="${x + 26}" y="${y + 62}" font-family="${font}" font-size="50" font-weight="600" letter-spacing="-2.5" fill="${t.ink}">${esc(n)}</text>` +
+    `<text x="${x + 26}" y="${y + 92}" font-family="${font}" font-size="17" fill="${t.muted}">${esc(l)}</text>` +
+    (l2 ? `<text x="${x + 26}" y="${y + 113}" font-family="${font}" font-size="14" fill="${t.muted}">${esc(l2)}</text>` : "");
   const rows = langs
     .map(([name, n], k) => {
-      const y = 150 + k * 32;
+      const y = 160 + k * 40;
       const w = Math.max(8, Math.round((n / langs[0][1]) * 440));
       return (
         `<text x="864" y="${y}" font-family="${font}" font-size="17" fill="${t.ink}">${esc(name)}</text>` +
@@ -126,17 +131,17 @@ function svg(t) {
     })
     .join("");
   const label = `GitHub in numbers: ${stats.map(([n, l]) => `${n} ${l}`).join(", ")}. Updated ${stamp}.`;
-  return `<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="330" viewBox="0 0 1600 330" role="img" aria-label="${esc(label)}">
-<rect width="1600" height="330" fill="${t.ground}"/>
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="372" viewBox="0 0 1600 372" role="img" aria-label="${esc(label)}">
+<rect width="1600" height="372" fill="${t.ground}"/>
 <text x="48" y="52" font-family="${mono}" font-size="13" letter-spacing="1.8" fill="${t.link}">GITHUB IN NUMBERS</text>
 <text x="1552" y="52" font-family="${mono}" font-size="13" fill="${t.muted}" text-anchor="end">Updated ${stamp}</text>
-<rect x="48.5" y="76.5" width="760" height="217" rx="20" fill="${t.card}" stroke="${t.hair}"/>
-<path d="M428.5 77V293M49 185.5H808" stroke="${t.hair}"/>
-${tile(stats[0], 48, 77)}${tile(stats[1], 429, 77)}${tile(stats[2], 48, 186)}${tile(stats[3], 429, 186)}
-<rect x="836.5" y="76.5" width="715" height="217" rx="20" fill="${t.card}" stroke="${t.hair}"/>
+<rect x="48.5" y="76.5" width="760" height="259" rx="20" fill="${t.card}" stroke="${t.hair}"/>
+<path d="M428.5 77V335M49 206.5H808" stroke="${t.hair}"/>
+${tile(stats[0], 48, 77)}${tile(stats[1], 429, 77)}${tile(stats[2], 48, 207)}${tile(stats[3], 429, 207)}
+<rect x="836.5" y="76.5" width="715" height="259" rx="20" fill="${t.card}" stroke="${t.hair}"/>
 <text x="864" y="110" font-family="${font}" font-size="17" fill="${t.muted}">Languages, by code in public repositories</text>
 ${rows}
-<text x="864" y="276" font-family="${font}" font-size="14" fill="${t.muted}">Contributions include work in private repositories.</text>
+<text x="864" y="318" font-family="${font}" font-size="14" fill="${t.muted}">Contributions include work in private repositories.</text>
 </svg>`;
 }
 
