@@ -20,6 +20,7 @@ I'm a full-stack software engineer, a QA and a support engineer in Uyo, Nigeria.
 
 - [Read the docs](https://docs.better-auth-nuvion.umoh.name.ng)
 - [Try the live example](https://better-auth-nuvion-example.umoh.name.ng), with your own Nuvion sandbox key ([source](https://github.com/umohpyro/better-auth-nuvion-example))
+- Start from a [Next.js starter](https://github.com/umohpyro/better-auth-nuvion-starter) ([live](https://better-auth-nuvion-starter.vercel.app), with your own sandbox key) or a [TanStack Start starter](https://github.com/umohpyro/better-auth-nuvion-tanstack-starter): the smallest useful app on each, MIT licensed
 
 Small apps I've built on the Nuvion sandbox, each one complete enough to read and run (no real money moves):
 
@@ -39,7 +40,6 @@ Small apps I've built on the Nuvion sandbox, each one complete enough to read an
 
 Also built on the Nuvion sandbox, with the source kept private for now (the live ones take your own sandbox key):
 
-- A **Next.js starter** and a **TanStack Start starter** on the plugin: the smallest useful app on each.
 - A **reference app** for building on the Nuvion API with Next.js 16, shadcn/ui, Prisma and SQLite.
 - A **[virtual card issuing](https://cards.umoh.name.ng)** example: issue and manage cards. Live, with your own sandbox key.
 - A **[marketplace](https://craftline.umoh.name.ng)** example (Craftline): one card payment split between sellers and the platform. Live, with your own sandbox key.
