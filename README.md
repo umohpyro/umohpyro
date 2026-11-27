@@ -66,4 +66,4 @@ Most of my work is in private repositories, so the public graph understates it. 
 
 ## Find me
 
-[LinkedIn](https://linkedin.com/in/umohpyro) · [Medium](https://medium.com/umohpyro) · [X](https://twitter.com/umohpyro) · [andemumoh@gmail.com](mailto:andemumoh@gmail.com)
+[LinkedIn](https://linkedin.com/in/umohpyro) · [Medium](https://medium.com/umohpyro) · [X](https://twitter.com/umohpyro) · [hello@umoh.name.ng](mailto:hello@umoh.name.ng)
